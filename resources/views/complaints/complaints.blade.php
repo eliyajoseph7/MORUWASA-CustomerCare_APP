@@ -43,7 +43,7 @@
                                 <div class="form-group row mb-3">
 
                                     <div class="col-md-6">
-                                    <label>Account Number</label>
+                                        <label>Account Number</label>
                                         <input id="account_number" type="text" class="form-control @error('account_number') is-invalid @enderror" name="account_number" 
                                         value="{{ old('account_number') }}" autocomplete="account_number" placeholder="Account Number" >
 
