@@ -223,8 +223,8 @@
                                     <h5 class="info-text"> Select the Gender </h5>
                                             <select name="gender" class="form-control">
                                                 <option value=""> choose.. </option>
-                                                <option value="m"> Male </option>
-                                                <option value="f"> Female </option>
+                                                <option value="M"> Male </option>
+                                                <option value="F"> Female </option>
                                             </select>
                                             
                                             <div class="custom-control-input  @error('gender') is-invalid @enderror col-md-6"></div>
