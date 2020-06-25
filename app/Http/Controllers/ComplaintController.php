@@ -68,7 +68,7 @@ class ComplaintController extends Controller
         $tech_status->complaint_id = $id;
         $tech_status->save();
 
-        $complaint = Complaint::find($id)->first();
+        $complaint = Complaint::where('id', $id)->first();
         $complaint->status = "assigned";
         $complaint->save();
         
