@@ -79,7 +79,25 @@ body, html {
   <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
   <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
 </nav>
-
+@if(session('info'))
+    <div class="text-center col-md-4 m-auto fixed-top" style="z-index: 1">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{session('info')}}.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>    
+@elseif(session('err'))
+    <div class="text-center col-md-4 m-auto fixed-top" style="z-index: 1">
+        <div class="alert alert-danger alert-dismissible show" role="alert">
+        {{session('err')}}.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+@endif
 <!-- Header with full-height image -->
 <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
   <div id="complain" class="w3-display-left w3-text-white" style="padding:48px">
@@ -254,7 +272,7 @@ body, html {
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <form method="POST" action="{{ url('/save_complaint') }}">
+        <form method="POST" action="{{ url('/send_complaint') }}">
              @csrf
             <div class="modal-body">
                 <div class="form-row">
@@ -263,6 +281,19 @@ body, html {
                             required autocomplete="name" autofocus placeholder="Your name">
 
                         @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <input type="text" class="form-control @error('meter_no') is-invalid @enderror" name="meter_no" value="{{ old('meter_no') }}" 
+                            required autocomplete="meter_no" autofocus placeholder="Your meter_no">
+
+                        @error('meter_no')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -385,13 +416,16 @@ body, html {
                         <button type="submit" class="btn btn-primary w-100">Submit</>
                     </div>
             </div>
+            <div class="text-center">
+                Note: <span class="text-danger">This is only for valid customers</span>
+            </div>
         </form>
     </div>
   </div>
 </div>
 
 <!-- Pricing Section -->
-<div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="pricing">
+<!-- <div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="pricing">
   <h3>PRICING</h3>
   <p class="w3-large">Choose a pricing plan that fits your needs.</p>
   <div class="w3-row-padding" style="margin-top:64px">
@@ -444,7 +478,7 @@ body, html {
       </ul>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-64">
@@ -457,7 +491,7 @@ body, html {
     <i class="fa fa-twitter w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
   </div>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">#moruwasa</a></p>
 </footer>
  
 <script>
