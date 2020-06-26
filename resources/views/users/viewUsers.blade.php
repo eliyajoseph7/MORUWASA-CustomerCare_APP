@@ -19,15 +19,7 @@
       </div>
     @endif
     <section class="content-header">
-      <h1>
-        Data Tables
-        <small>advanced tables</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
-      </ol>
+      
     </section>
 
     <section class="content">
@@ -39,7 +31,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive ">
-              <table id="example1" class="table table-bordered table-hover p-3 ">
+              <table id="example1" class="table table-bordered table-hover p-3 display nowrap" style="width:100%">
                 <thead>
                 <tr>
                     <th>First Name</th>
@@ -72,8 +64,9 @@
                     <td >
                         <div class="d-flex justify-content-between">
                             <a href='{{ url("viewUser/{$user->id}") }}' id="update" class="inline-flex float-left text-primary"><i class="fa fa-edit"></i></a>
-                            <a href="" data-toggle="modal" data-target="#{{($user->id)}}" class="inline-flex float-right text-danger" ><i class="fa fa-trash"></i></a>
-                            
+                            <a href="#" data-toggle="modal" data-target="#{{($user->id)}}" class="inline-flex float-right text-danger" ><i class="fa fa-trash"></i></a>
+                        </div>
+                    </td>   
                             <!-- Modal -->
                             <div class="modal fade" id="{{($user->id)}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">
@@ -94,8 +87,8 @@
                                     </div>
                                 </div>
                             </div>
-                            </td>
-                        </div>
+                            
+                        
                 </tr>
                     @endforeach
                 @endif
