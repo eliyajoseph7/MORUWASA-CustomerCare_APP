@@ -34,6 +34,10 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+  <script src="{{ url('bower_components/jquery/dist/jquery.min.js')}}"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -180,28 +184,12 @@
           </a>
         </li>
         </li> 
-        <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-th"></i> <span>Logs</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-red">new</small>
-            </span>
-          </a>
-        </li>
         @elseif($role == 'agent')
         <li>
           <a href="/add_complaint">
             <i class="fa fa-plus"></i> <span>Add Complaint</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-primary">add</small>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-file"></i> <span>Complaint Upload</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-orange">upload</small>
             </span>
           </a>
         </li>
@@ -473,7 +461,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="{{ url('bower_components/jquery/dist/jquery.min.js')}}"></script>
+<!-- <script src="{{ url('bower_components/jquery/dist/jquery.min.js')}}"></script> -->
 <!-- jQuery UI 1.11.4 -->
 <script src="{{ url('bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -524,7 +512,7 @@
     });
 
 </script>
-<script>
+<!-- <script>
   $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({
@@ -536,8 +524,31 @@
       'autoWidth'   : false
     })
   })
+</script> -->
+<script>
+$(document).ready(function() {
+    $('#example1').DataTable( {
+        responsive: {
+            details: {
+                renderer: function ( api, rowIdx, columns ) {
+                    var data = $.map( columns, function ( col, i ) {
+                        return col.hidden ?
+                            '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+                                '<td>'+col.title+':'+'</td> '+
+                                '<td>'+col.data+'</td>'+
+                            '</tr>' :
+                            '';
+                    } ).join('');
+ 
+                    return data ?
+                        $('<table/>').append( data ) :
+                        false;
+                }
+            }
+        }
+    } );
+} );
 </script>
-
 <!-- bootstrap modal -->
 <!-- <script>
 $('#myModal').on('shown.bs.modal', function () {
