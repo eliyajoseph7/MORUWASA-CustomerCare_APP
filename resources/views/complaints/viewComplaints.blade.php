@@ -44,8 +44,8 @@
                 <tbody>
                 @if(count($complaints ?? '') > 0)   
                     @foreach($complaints ?? ''->all() as $complaint) 
+                @if($zone == $complaint->zone)
                 <tr>
-                  @if($zone == $complaint->zone)
                     <td>{{ ($complaint->name) }}</td>
                     <td>{{ ($complaint->account_number) }}</td>
                     <td>{{ ($complaint->zone) }}</td>
@@ -104,8 +104,8 @@
                           </div>
                       </div>
                   </div>
-                  @endif
                 </tr>
+                @endif
                     @endforeach
                 @endif
                 </tbody>
