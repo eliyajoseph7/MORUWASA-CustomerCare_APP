@@ -104,8 +104,6 @@
                           </div>
                       </div>
                   </div>
-                  @elseif($zone != $complaint->zone)
-                      <td>No complains available</td>
                   @endif
                 </tr>
                     @endforeach
