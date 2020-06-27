@@ -23,7 +23,7 @@ class CustomerComplaintController extends Controller
             $validatedData = $request->validate([
                 'name' => ['required', 'string', 'max:255'],
                 'account_number' => [ 'required','max:255'],
-                'location' => ['required', 'string', 'max:255'],
+                'zone' => ['required', 'string', 'max:255'],
                 'phone' => ['required', 'regex:/^(\+255)[0-9]{9}$/', 'max:13'],
                 'complaint_type' => ['required', 'string', 'max:50'],
                 'report_medium' => ['required', 'string', 'max:255', ],
@@ -34,7 +34,7 @@ class CustomerComplaintController extends Controller
 
             $complaints->name = $request->input('name');
             $complaints->account_number = $request->input('account_number');
-            $complaints->location = $request->input('location');
+            $complaints->zone = $request->input('zone');
             $complaints->phone = $request->input('phone');
             $complaints->report_medium = $request->input('report_medium');
             $complaints->complaint_type = $request->input('complaint_type');
