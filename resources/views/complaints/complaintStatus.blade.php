@@ -32,7 +32,7 @@
                 <tr>
                     <th>Customer Name</th>
                     <th>Account Number</th>
-                    <th>Location</th>
+                    <th>Zone</th>
                     <th>Phone</th>
                     <th>Complaint Type</th>
                     <th>Reported Via</th>
@@ -49,7 +49,7 @@
                 <tr>
                     <td>{{ ($complaint->name) }}</td>
                     <td>{{ ($complaint->account_number) }}</td>
-                    <td>{{ ($complaint->location) }}</td>
+                    <td>{{ ($complaint->zone) }}</td>
                     <td>{{ ($complaint->phone) }}</td>
                     <td>{{ ($complaint->complaint_type) }}</td>
                     <td>{{ ($complaint->report_medium) }}</td>
@@ -81,7 +81,7 @@
                 <tr>
                     <th>Customer Name</th>
                     <th>Account Number</th>
-                    <th>Location</th>
+                    <th>Zone</th>
                     <th>Phone</th>
                     <th>Complaint Type</th>
                     <th>Reported Via</th>
