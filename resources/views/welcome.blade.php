@@ -123,7 +123,7 @@ body, html {
     <p class="w3-center w3-large">You can submit your complain througy the following ways</p>
     <div class="container">
         <div class="w3-center row" style="margin-top:64px">
-            <div class="col-md-4 cd">
+            <div class="col-md-4 cd mb-3">
                 <div class="w3-card">
                     <div class="w3-container p-5">
                         <h3>Visiting our Office</h3>
@@ -132,7 +132,7 @@ body, html {
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 cd">
+            <div class="col-md-4 cd mb-3">
                 <div class="w3-card">
                     <div class="w3-container p-5">
                         <h3>Email address</h3>
@@ -141,7 +141,7 @@ body, html {
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 cd">
+            <div class="col-md-4 cd mb-3">
                 <div class="w3-card">
                     <div class="w3-container p-5">
                         <h3>Mobile Phone</h3>
