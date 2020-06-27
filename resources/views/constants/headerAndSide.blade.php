@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="{{ url('bower_components/Ionicons/css/ionicons.min.css') }}">
   <!-- DataTables -->
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ url('dist/css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ url('css/custom_styles.css') }}">
