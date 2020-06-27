@@ -53,10 +53,10 @@ body, html {
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-card" id="myNavbar">
-    <a href="#home" class="w3-bar-item w3-button w3-wide">LOGO</a>
+    <a href="#home" class="w3-bar-item w3-button w3-wide">CustCare</a>
     <!-- Right-sided navbar links -->
     <div class="w3-right w3-hide-small">
-      <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
+      <a href="#about" class="w3-bar-item w3-button">REACH US</a>
       <a href="#team" class="w3-bar-item w3-button"><i class="fa fa-user"></i> TEAM</a>
       <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> WORK</a>
       <a href="#pricing" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> PRICING</a>
@@ -175,9 +175,9 @@ body, html {
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-        <div class="w3-row-padding w3-grayscale d-flex justify-content-center" style="margin-top:64px">
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-card">
+        <div class="row w3-grayscale d-flex justify-content-center" style="margin-top:64px">
+            <div class="col-md-3 m6 w3-margin-bottom">
+                <div class="w3-card col-md-12">
                     <img src="https://images.fineartamerica.com/images-medium-large-5/blurred-waterfall-ivan-slosar.jpg" alt="John" style="width:100%">
                     <div class="w3-container text-center">
                     <h3>Zone 1</h3>
@@ -187,8 +187,8 @@ body, html {
                     </div>
                 </div>
             </div>
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-card">
+            <div class="col-md-3 m6 w3-margin-bottom">
+                <div class="w3-card col-md-12">
                     <img src="https://images.fineartamerica.com/images-medium-large-5/blurred-waterfall-ivan-slosar.jpg" alt="Jane" style="width:100%">
                     <div class="w3-container text-center">
                     <h3>Zone 2</h3>
@@ -198,8 +198,8 @@ body, html {
                     </div>
                 </div>
             </div>
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-card">
+            <div class="col-md-3 m6 w3-margin-bottom">
+                <div class="w3-card col-md-12">
                     <img src="https://images.fineartamerica.com/images-medium-large-5/blurred-waterfall-ivan-slosar.jpg" alt="Dan" style="width:100%">
                     <div class="w3-container text-center">
                     <h3>Zone 3</h3>
@@ -212,9 +212,9 @@ body, html {
         </div>
     </div>
     <div class="carousel-item">
-        <div class="w3-row-padding w3-grayscale d-flex justify-content-center" style="margin-top:64px">
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-card">
+        <div class="row w3-grayscale d-flex justify-content-center" style="margin-top:64px">
+            <div class="col-md-3 m6 w3-margin-bottom">
+                <div class="w3-card col-md-12">
                     <img src="https://images.fineartamerica.com/images-medium-large-5/blurred-waterfall-ivan-slosar.jpg" alt="John" style="width:100%">
                     <div class="w3-container text-center">
                     <h3>Zone 4</h3>
@@ -224,8 +224,8 @@ body, html {
                     </div>
                 </div>
             </div>
-            <div class="w3-col l3 m6 w3-margin-bottom">
-                <div class="w3-card">
+            <div class="col-md-3 m6 w3-margin-bottom">
+                <div class="w3-card col-md-12">
                     <img src="https://images.fineartamerica.com/images-medium-large-5/blurred-waterfall-ivan-slosar.jpg" alt="Jane" style="width:100%">
                     <div class="w3-container text-center">
                     <h3>Zone 5</h3>
@@ -235,8 +235,8 @@ body, html {
                     </div>
                 </div>
             </div>
-            <div class="w3-col l3 m6 w3-margin-bottom">
-            <div class="w3-card">
+            <div class="col-md-3 m6 w3-margin-bottom">
+            <div class="w3-card col-md-12">
                 <img src="https://images.fineartamerica.com/images-medium-large-5/blurred-waterfall-ivan-slosar.jpg" alt="Dan" style="width:100%">
                 <div class="w3-container text-center">
                 <h3>Zone 6</h3>
@@ -278,7 +278,7 @@ body, html {
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" 
-                            required autocomplete="name" autofocus placeholder="Your name">
+                            required autocomplete="name" autofocus placeholder="Your name *">
 
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -291,7 +291,7 @@ body, html {
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <input type="text" class="form-control @error('meter_no') is-invalid @enderror" name="meter_no" value="{{ old('meter_no') }}" 
-                            required autocomplete="meter_no" autofocus placeholder="Your meter_no">
+                            required autocomplete="meter_no" autofocus placeholder="Your meter number *">
 
                         @error('meter_no')
                             <span class="invalid-feedback" role="alert">
@@ -304,7 +304,7 @@ body, html {
                     <div class="col-md-6">
                         <label>Account Number</label>
                         <input id="account_number" type="text" class="form-control @error('account_number') is-invalid @enderror" name="account_number" 
-                        value="{{ old('account_number') }}" autocomplete="account_number" placeholder="Account Number" >
+                        value="{{ old('account_number') }}" autocomplete="account_number" placeholder="Account Number *" >
 
                         @error('account_number')
                             <span class="invalid-feedback" role="alert">
@@ -314,7 +314,7 @@ body, html {
                     </div>
 
                     <div class="col-md-6">
-                        <label>Phone</label>
+                        <label>Phone *</label>
                         <input name="phone" type="tel" class="form-control @error('phone') is-invalid @enderror"
                                 id="phone" value="{{ old('phone') }}" required autocomplete="phone" placeholder="+255123456789">
                         
@@ -327,8 +327,8 @@ body, html {
                 </div>
                 <div class="form-row">
                     <div class="col-md-6">
-                        <label class="info-text"> Select the location </label>
-                            <select name="location" id="location" class="form-control">
+                        <label class="info-text"> Select the zone *</label>
+                            <select name="" id="zone" class="form-control">
                                 <option value=""> select.. </option>
                                 <option value="mazimbu"> Mazimbu </option>
                                 <option value="sabasaba">Sabasaba</option>
@@ -337,15 +337,15 @@ body, html {
                                 <option value="boma"> Boma</option>
                                 <option value="kihonda"> Kihonda</option>
                             </select>
-                        <div class="custom-control-input  @error('location') is-invalid @enderror col-md-6"></div>
-                        @error('location')
+                        <div class="custom-control-input  @error('zone') is-invalid @enderror col-md-6"></div>
+                        @error('zone')
                             <span class="invalid-feedback text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="col-md-6">
-                        <label class="info-text">Complaint Type </label>
+                        <label class="info-text">Complaint Type *</label>
                             <select name="complaint_type" class="form-control">
                                 <option value="">select..</option>
                                 <option value="high_bill">High bills</option>
@@ -390,7 +390,7 @@ body, html {
                         @enderror
                     </div>
                     <div class="col-md-6">
-                        <label class="info-text"> Select the Priority </label>
+                        <label class="info-text"> Select the Priority *</label>
                             <select name="complaint_priority" class="form-control">
                                 <option value="">select..</option>
                                 <option value="high">High</option>
@@ -417,7 +417,7 @@ body, html {
                     </div>
             </div>
             <div class="text-center">
-                Note: <span class="text-danger">This is only for valid customers</span>
+                <h5 class="text-muted">Note:</h5> <span class="text-danger"><strong>This is only for valid customers</strong></span>
             </div>
         </form>
     </div>
