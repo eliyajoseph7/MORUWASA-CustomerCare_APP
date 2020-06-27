@@ -34,6 +34,7 @@ class UserController extends Controller
             'username' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'regex:/^(\+255)[0-9]{9}$/', 'max:13'],
             'role' => ['required', 'string', 'max:30'],
+            'zone' => ['required', 'string', 'max:30'],
             'gender' => ['required', 'string', 'max:5'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -48,6 +49,7 @@ class UserController extends Controller
         $newUser->phone = $request->input('phone');
         $newUser->role = $request->input('role');
         $newUser->gender = $request->input('gender');
+        $newUser->zone = $request->input('zone');
         $newUser->email = $request->input('email');
         $newUser->password = Hash::make($request -> input('password'));
 
@@ -72,6 +74,7 @@ class UserController extends Controller
         $user->username = $request->input('username');
         $user->phone = $request->input('phone');
         $user->role = $request->input('role');
+        $user->zone = $request->input('zone');
         $user->gender = $request->input('gender');
         $user->email = $request->input('email');
 

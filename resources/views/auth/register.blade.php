@@ -95,10 +95,9 @@
                         </div>
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('User Role') }}</label>
-
-                            <div class="col-md-6">
-                                <h5 class="info-text"> Select the role </h5>
-                                            <div class="col-md-4 col-lg-4 col-sm-4">
+                            <div class="col-md-8">
+                                
+                                            <div class="col-md-12 col-lg-4 col-sm-4">
                                                 <select name="role" id="role" class="form-control">
                                                     <option value=""> select.. </option>
                                                     <option value="admin"> Admin </option>
@@ -108,6 +107,30 @@
                                             </div>
                                             <div class="custom-control-input  @error('role') is-invalid @enderror col-md-6"></div>
                                 @error('role')
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            
+                        </div>
+                        <div class="form-group row">
+                        <label for="zone" class="col-md-4 col-form-label text-md-right">{{ __('User Zone') }}</label>
+                            <div class="col-md-8">
+                                
+                                <div class="col-md-12 col-lg-4 col-sm-4">
+                                    <select name="zone" id="zone" class="form-control">
+                                        <option value=""> select.. </option>
+                                        <option value="mazimbu"> Mazimbu </option>
+                                        <option value="sabasaba">Sabasaba</option>
+                                        <option value="msanvu"> Msanvu</option>
+                                        <option value="mindu"> Mindu</option>
+                                        <option value="boma"> Boma</option>
+                                        <option value="kihonda"> Kihonda</option>
+                                    </select>
+                                </div>
+                                <div class="custom-control-input  @error('zone') is-invalid @enderror col-md-6"></div>
+                                @error('zone')
                                     <span class="invalid-feedback text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
