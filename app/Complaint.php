@@ -15,7 +15,7 @@ class Complaint extends Model
     protected $fillable = [
             'name',
             'account_number',
-            'location',
+            'zone',
             'phone',
             'complaint_type',
             'report_medium',
