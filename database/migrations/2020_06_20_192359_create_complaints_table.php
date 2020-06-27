@@ -18,7 +18,7 @@ class CreateComplaintsTable extends Migration
             $table->string('name');
             $table->string('account_number');
             $table->string('phone');
-            $table->string('location');
+            $table->string('zone');
             $table->string('complaint_type');
             $table->string('description')->nullable();
             $table->string('report_medium');
