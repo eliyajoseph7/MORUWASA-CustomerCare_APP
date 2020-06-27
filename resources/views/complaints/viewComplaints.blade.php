@@ -17,7 +17,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
 @endif
-
+<?php $zone = Auth::user()->zone; ?>
 <section class="content">
       <div class="row">
         <div class="col-xl-12">
@@ -32,7 +32,7 @@
                 <tr>
                     <th>Customer Name</th>
                     <th>Account Number</th>
-                    <th>Location</th>
+                    <th>Zone</th>
                     <th>Phone</th>
                     <th>Complaint Type</th>
                     <th>Reported Via</th>
@@ -45,17 +45,18 @@
                 @if(count($complaints ?? '') > 0)   
                     @foreach($complaints ?? ''->all() as $complaint) 
                 <tr>
+                  @if($zone == $complaint->zone)
                     <td>{{ ($complaint->name) }}</td>
                     <td>{{ ($complaint->account_number) }}</td>
-                    <td>{{ ($complaint->location) }}</td>
+                    <td>{{ ($complaint->zone) }}</td>
                     <td>{{ ($complaint->phone) }}</td>
                     <td>{{ ($complaint->complaint_type) }}</td>
                     <td>{{ ($complaint->report_medium) }}</td>
                     <td>{{ ($complaint->complaint_priority) }}</td>
-                    @if($complaint->description !== null)
-                        <td>{{ ($complaint->description) }}</td>
-                    @else
-                        <td>-</td>
+                      @if($complaint->description !== null)
+                          <td>{{ ($complaint->description) }}</td>
+                      @else
+                          <td>-</td>
                     @endif
                     <td >
                       <a href='#' data-toggle="modal" data-target="#{{ ($complaint->id) }}" class="inline-flex float-left bg-maroon-active badge badge-danger">assign tech</a>
@@ -74,7 +75,7 @@
                               <div class="modal-body">
                                   <div class="bg-light text-center">
                                     <div class="form-group col">
-                                      <label for="message-text" class="control-label">Assign {{($complaint->complaint_type)}} complaint at {{($complaint->location)}} to:</label>
+                                      <label for="message-text" class="control-label">Assign {{($complaint->complaint_type)}} complaint at {{($complaint->zone)}} to:</label>
                                       <div class="col-md-12">
                                         <select name="fname" class="form-control" required>
                                               <option value=""> choose.. </option>
@@ -103,6 +104,9 @@
                           </div>
                       </div>
                   </div>
+                  @else
+                      <td>No complains available</td>
+                  @endif
                 </tr>
                     @endforeach
                 @endif
@@ -111,7 +115,7 @@
                 <tr>
                     <th>Customer Name</th>
                     <th>Account Number</th>
-                    <th>Location</th>
+                    <th>Zone</th>
                     <th>Phone</th>
                     <th>Complaint Type</th>
                     <th>Reported Via</th>

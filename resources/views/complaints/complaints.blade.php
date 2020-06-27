@@ -70,8 +70,8 @@
                                 <div class="form-group row mb-3">
 
                                     <div class="col-md-6">
-                                        <h5 class="info-text"> Select the location </h5>
-                                            <select name="location" id="location" class="form-control">
+                                        <h5 class="info-text"> Select the zone </h5>
+                                            <select name="zone" id="zone" class="form-control">
                                                 <option value=""> select.. </option>
                                                 <option value="mazimbu"> Mazimbu </option>
                                                 <option value="sabasaba">Sabasaba</option>
@@ -80,8 +80,8 @@
                                                 <option value="boma"> Boma</option>
                                                 <option value="kihonda"> Kihonda</option>
                                             </select>
-                                        <div class="custom-control-input  @error('location') is-invalid @enderror col-md-6"></div>
-                                        @error('location')
+                                        <div class="custom-control-input  @error('zone') is-invalid @enderror col-md-6"></div>
+                                        @error('zone')
                                             <span class="invalid-feedback text-danger" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
