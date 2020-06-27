@@ -53,10 +53,10 @@
                     <td>{{ ($complaint->complaint_type) }}</td>
                     <td>{{ ($complaint->report_medium) }}</td>
                     <td>{{ ($complaint->complaint_priority) }}</td>
-                      @if($complaint->description !== null)
-                          <td>{{ ($complaint->description) }}</td>
-                      @else
-                          <td>-</td>
+                    @if($complaint->description !== null)
+                        <td>{{ ($complaint->description) }}</td>
+                    @else
+                        <td>not assigned</td>
                     @endif
                     <td >
                       <a href='#' data-toggle="modal" data-target="#{{ ($complaint->id) }}" class="inline-flex float-left bg-maroon-active badge badge-danger">assign tech</a>
@@ -104,7 +104,7 @@
                           </div>
                       </div>
                   </div>
-                  @else
+                  @elseif($zone != $complaint->zone)
                       <td>No complains available</td>
                   @endif
                 </tr>
