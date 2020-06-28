@@ -195,7 +195,7 @@
           </a>
         </li>
         <li>
-          <a href="complaint_status">
+          <a href="complaint_statuses">
             <i class="fa fa-star"></i> <span>Complaint Status</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">status</small>
@@ -220,7 +220,7 @@
           </a>
         </li>
         <li>
-          <a href="complaint_status">
+          <a href="complaint_statuses">
             <i class="fa fa-star"></i> <span>Complaint Status</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">view</small>
@@ -497,6 +497,13 @@
 <!-- DataTables -->
 <script src="{{ url('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ url('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+
+<!-- Charts -->
+<script src="{{url('js/chartJs/Chart.min.js')}}"></script>
+<script src="{{url('js/chartJs/create-charts.js')}}"></script>
+<script src="{{url('js/chartJs/create-charts1.js')}}"></script>
+<script src="{{url('js/chartJs/create-charts2.js')}}"></script>
+
 
 <script type='text/javascript'>
     $(document).ready(function(){
