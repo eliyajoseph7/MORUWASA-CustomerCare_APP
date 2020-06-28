@@ -21,6 +21,7 @@ class CreateTechniciansTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('gender');
+            $table->string('zone');
             $table->string('status')->default('available');
             $table->integer('complaint_id')->unsigned()->nullable();
             $table->foreign('complaint_id')->references('id')->on('complaints')->onDelete('set null');                           
