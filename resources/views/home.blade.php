@@ -38,7 +38,7 @@
               </div>
             </div>
             <div class="box-body">
-              <canvas id="statusChart" style="height: 300px; padding: 0px; position: relative;" height="58" width="116"></canvas>
+              <canvas id="statusChart" style="height: 300px; padding: 0px; position: relative;"></canvas>
             </div>
             <!-- /.box-body -->
           </div>
