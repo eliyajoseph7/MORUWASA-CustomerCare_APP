@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \GuzzleHttp\Client;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $client = new Client();
+        $response = $client->get('http://desolate-shelf-21097.herokuapp.com/customer');
+        $resp = json_decode($response->getBody());
+        
+        return view('home', ['resp'=>$resp]);
     }
 }
