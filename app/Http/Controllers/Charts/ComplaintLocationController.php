@@ -10,12 +10,12 @@ class ComplaintLocationController extends Controller
 {
     public function getAllMonths()
     {
-        $month_array = array();
-        $complaints_dates = Complaint::distinct('zone')->orderBy('zone', 'ASC')->pluck('zone');
-        $complaints_dates = json_decode($complaints_dates);
+        $zone_array = array();
+        $complaints_zones = Complaint::distinct('zone')->orderBy('zone', 'ASC')->pluck('zone');
+        $complaints_zones = json_decode($complaints_zones);
 
-        if (! empty($complaints_dates)) {
-            foreach ($complaints_dates as $zones) {
+        if (! empty($complaints_zones)) {
+            foreach ($complaints_zones as $zones) {
                 $zone_name = $zones;
                 $zone_array [] = $zone_name;
             }
