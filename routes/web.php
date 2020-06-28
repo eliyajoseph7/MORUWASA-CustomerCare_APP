@@ -43,5 +43,20 @@ Route::get('/add_complaint','ComplaintController@view');
 Route::post('/save_complaint','ComplaintController@add');
 Route::get('/complaints','ComplaintController@index');
 Route::post('/assignTechnician/{id}', 'ComplaintController@assignTask');
-Route::get('/complaint_status', 'ComplaintController@complaintStatus');
+Route::get('/complaint_statuses', 'ComplaintController@complaintStatus');
 Route::post('/send_complaint', 'CustomerComplaintController@customerComplaint');
+
+
+// charts
+Route::get('/complaints_data',[
+    'as' => 'complaints_data.show',
+    'uses' => 'Charts\ChartComplaintsController@getMonthlyComplaintData'
+]);
+Route::get('/complaint_status',[
+    'as' => 'complaint_status.status',
+    'uses' => 'Charts\ComplaintStatusController@getMonthlyComplaintStatus'
+]);
+Route::get('/complaint_location',[
+    'as' => 'complaint_location.location',
+    'uses' => 'Charts\ComplaintLocationController@getMonthlyComplaintLocation'
+]);
