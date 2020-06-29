@@ -41,6 +41,7 @@
                     <th>Status</th>
                     <th>Date reported</th>
                     <th>Technician assigned</th>
+                    <th>Task duration (Days) </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -72,7 +73,12 @@
                     @else
                             <td><a  class="inline-flex float-left bg-blue-active badge badge-danger">-</a></td>
                         
-                    @endif    
+                    @endif 
+                    @if(($complaint->duration) !== null) 
+                      <td>{{ ($complaint->duration) }}</td>
+                    @else
+                      <td>null</td>
+                    @endif      
                 </tr>
                     @endforeach
                 @endif
@@ -90,6 +96,7 @@
                     <th>Status</th>
                     <th>Date reported</th>
                     <th>Technician assigned</th>
+                    <th>Task duration (Days) </th>
                 </tr>
                 </tfoot>
               </table>
