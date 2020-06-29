@@ -97,6 +97,7 @@
 
 <!-- view customer according to the agent zone -->
 <?php  $zone = Auth::user()->zone ?> 
+<?php  $role = Auth::user()->role ?> 
       <section class="content">
       <div class="row">
         <div class="col-xl-12">
@@ -125,18 +126,26 @@
                         $street = $resp->street ;
                         
                       ?>
-                      @if(strtolower($resp->street) == strtolower($zone) )
+                      @if(strtolower($resp->street) == strtolower($zone) and $role=="manager" )
                       <tr>
                           <td>{{ ($resp->name) }}</td>
-                          
-                            <td>{{ ($resp->street) }}</td>
-                        
+                          <td>{{ ($resp->street) }}</td>
                           <td>{{ ($resp->gender) }}</td>
                           <td>{{ ($resp->phone) }}</td>
                           <td>{{ ($resp->category) }}</td>
                           <td>{{ ($resp->meter_no) }}</td>
                           <td>{{ ($resp->type) }}</td> 
                       </tr>
+                      @elseif($role != 'manager')
+                        <tr>
+                          <td>{{ ($resp->name) }}</td>
+                          <td>{{ ($resp->street) }}</td>
+                          <td>{{ ($resp->gender) }}</td>
+                          <td>{{ ($resp->phone) }}</td>
+                          <td>{{ ($resp->category) }}</td>
+                          <td>{{ ($resp->meter_no) }}</td>
+                          <td>{{ ($resp->type) }}</td>
+                        </tr> 
                       @endif  
                     @endforeach
                 @endif
