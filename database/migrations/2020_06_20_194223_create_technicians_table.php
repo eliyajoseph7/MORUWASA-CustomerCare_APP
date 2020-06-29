@@ -23,6 +23,7 @@ class CreateTechniciansTable extends Migration
             $table->string('gender');
             $table->string('zone');
             $table->string('status')->default('available');
+            $table->string('api_token', 60);
             $table->integer('complaint_id')->unsigned()->nullable();
             $table->foreign('complaint_id')->references('id')->on('complaints')->onDelete('set null');                           
             $table->timestamps();
