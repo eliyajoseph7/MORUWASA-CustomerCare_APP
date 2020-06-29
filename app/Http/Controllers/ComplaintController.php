@@ -70,8 +70,17 @@ class ComplaintController extends Controller
 
         $complaint = Complaint::where('id', $id)->first();
         $complaint->status = "assigned";
+
+        if($complaint->complaint_priority == 'high'){
+            $complaint->duration = '3';
+        }
+        elseif($complaint->complaint_priority == 'medium'){
+            $complaint->duration = '4';
+        }
+        else{
+            $complaint->duration = '5';
+        }
         $complaint->save();
-        
         return \redirect('/complaints')->with('info', 'task assigned successfully');
     }
 
