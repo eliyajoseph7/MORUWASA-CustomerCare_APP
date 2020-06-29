@@ -24,6 +24,7 @@ class CreateComplaintsTable extends Migration
             $table->string('report_medium');
             $table->string('complaint_priority');
             $table->string('status')->nullable()->default('new');
+            $table->string('duration')->nullable();
             $table->timestamps();
         });
     }
