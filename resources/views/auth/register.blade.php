@@ -101,8 +101,8 @@
                                                 <select name="role" id="role" class="form-control">
                                                     <option value=""> select.. </option>
                                                     <option value="admin"> Admin </option>
-                                                    <option value="customer care agent"> Customer care agent </option>
-                                                    <option value="zone manager"> Zone manager </option>
+                                                    <option value="agent"> Customer care agent </option>
+                                                    <option value="manager"> Zone manager </option>
                                                 </select>
                                             </div>
                                             <div class="custom-control-input  @error('role') is-invalid @enderror col-md-6"></div>
@@ -143,8 +143,8 @@
                             <div class="col-md-6">
                                     <select name="gender" class="form-control">
                                         <option value=""> choose.. </option>
-                                        <option value="m"> Male </option>
-                                        <option value="f"> Female </option>
+                                        <option value="M"> Male </option>
+                                        <option value="F"> Female </option>
                                     </select>
                                     
                                     <div class="custom-control-input  @error('gender') is-invalid @enderror col-md-6"></div>
