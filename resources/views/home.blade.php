@@ -3,7 +3,9 @@
 @section('content')
 
     <!-- Main content -->
+<?php $role = Auth::user()->role ?>
 
+@if($role != 'agent')
       <div class="row">
         <div class="col-md-6">
           <!-- AREA CHART -->
@@ -91,8 +93,10 @@
         <!-- /.col (RIGHT) -->
       </div>
       <!-- /.row -->
+@endif
 
-
+<!-- view customer according to the agent zone -->
+<?php  $zone = Auth::user()->zone ?> 
       <section class="content">
       <div class="row">
         <div class="col-xl-12">
@@ -117,15 +121,23 @@
                 <tbody>
                 @if(count($resp ?? '') > 0)   
                     @foreach($resp ?? ''->all() as $resp) 
-                <tr>
-                    <td>{{ ($resp->name) }}</td>
-                    <td>{{ ($resp->street) }}</td>
-                    <td>{{ ($resp->gender) }}</td>
-                    <td>{{ ($resp->phone) }}</td>
-                    <td>{{ ($resp->category) }}</td>
-                    <td>{{ ($resp->meter_no) }}</td>
-                    <td>{{ ($resp->type) }}</td>   
-                </tr>
+                      <?php
+                        $street = $resp->street ;
+                        
+                      ?>
+                      @if(strtolower($resp->street) == strtolower($zone) )
+                      <tr>
+                          <td>{{ ($resp->name) }}</td>
+                          
+                            <td>{{ ($resp->street) }}</td>
+                        
+                          <td>{{ ($resp->gender) }}</td>
+                          <td>{{ ($resp->phone) }}</td>
+                          <td>{{ ($resp->category) }}</td>
+                          <td>{{ ($resp->meter_no) }}</td>
+                          <td>{{ ($resp->type) }}</td> 
+                      </tr>
+                      @endif  
                     @endforeach
                 @endif
                 </tbody>
