@@ -17,7 +17,7 @@ $factory->define(Complaint::class, function (Faker $faker) {
         // 'gender' => $faker->randomElement(['M', 'F']),
         'phone' => '+255'.$result,
         'complaint_type' => $faker->randomElement(['high bill', 'no water service', 'meter defaults', 'leackage']),
-        'report_medium' => $faker->randomElement(['phone', 'direct', 'website', 'leackage']),
+        'report_medium' => $faker->randomElement(['phone', 'direct', 'website']),
         'complaint_priority' => $faker->randomElement(['high', 'medium', 'low']),
         'status' => $faker->randomElement(['new', 'completed']),
         'description' => $faker->sentence,

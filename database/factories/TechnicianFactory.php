@@ -17,5 +17,6 @@ $factory->define(Technician::class, function (Faker $faker) {
         'gender' => $faker->randomElement(['M', 'F']),
         'phone' => '+255'.$result,
         'email' => strtolower($faker->lexify('???')) . '@gmail.com',
+        'api_token' => bin2hex(openssl_random_pseudo_bytes(30))
     ];
 });
