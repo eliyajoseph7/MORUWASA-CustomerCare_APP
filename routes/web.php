@@ -27,6 +27,8 @@ Route::get('/viewUser/{id}', 'UserController@view');
 Route::post('/addUser', 'UserController@add');
 Route::post('/updateUser/{id}', 'UserController@update');
 Route::get('/deleteUser/{id}', 'UserController@delete');
+Route::get('/profile/{id}', 'UserController@viewProfile');
+Route::post('/updateProfile/{id}', 'UserController@updateProfile');
 
 // technician
 Route::get('/view_tech', 'TechnicianController@view');
