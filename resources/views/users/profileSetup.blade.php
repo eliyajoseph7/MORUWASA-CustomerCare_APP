@@ -1,4 +1,4 @@
-@extends('constants\headerAndSide')
+@extends('constants.headerAndSide')
 
 @section('content')
 
