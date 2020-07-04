@@ -6,6 +6,11 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         {{session('info')}}.
     </div>
+@elseif(session('err'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{session('err')}}.
+    </div>
 @endif
 @if ($errors->any()) 
       <div class="alert alert-danger alert-dismissible" role="alert">
@@ -97,8 +102,23 @@
                                                 <option value="F"> Female </option>
                                             </select>
                                             
-                                            <div class="custom-control-input  @error('gender') is-invalid @enderror col-md-6"></div>
+                                            <div class="custom-control-input  @error('gender') is-invalid @enderror col-md-12"></div>
                                         @error('gender')
+                                            <span class="invalid-feedback text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-3">
+
+                                    <div class="col-md-12">
+                                        <h5 class="info-text"> Select the zone </h5>
+                                            <select name="zone" id="zone" class="form-control">
+                                                <option value=<?php echo Auth::user()->zone ?>> <?php echo Auth::user()->zone ?> </option>
+                                            </select>
+                                        <div class="custom-control-input  @error('zone') is-invalid @enderror col-md-12"></div>
+                                        @error('zone')
                                             <span class="invalid-feedback text-danger" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

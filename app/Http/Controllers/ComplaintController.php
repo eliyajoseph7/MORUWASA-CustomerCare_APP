@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Complaint;
 use App\Technician;
+use App\User;
 
 class ComplaintController extends Controller
 {
@@ -24,8 +25,12 @@ class ComplaintController extends Controller
     }
 
     public function index(){
-        $technicians = Technician::where('status', 'available')->get(); // getting all the technicians with no assigned tasks
-        $complaints = Complaint::where('status', 'new')->get(); // getting all the new complaint which have not addressed
+        $technicians = Technician::where('status', 'available')
+                                ->where('zone', User::distinct('zone')->pluck('zone'))
+                                ->get(); // getting all the technicians with no assigned tasks corresponding to the zone manager's zone
+        $complaints = Complaint::where('status', 'new')
+                                ->where('zone', User::distinct('zone')->pluck('zone'))
+                                ->get(); // getting all the new complaint which have not addressed corresponding to the zone manager's zone
         return view('complaints/viewComplaints', ['complaints'=>$complaints, 'technicians'=>$technicians]);
     }
 
@@ -72,13 +77,13 @@ class ComplaintController extends Controller
         $complaint->status = "assigned";
 
         if($complaint->complaint_priority == 'high'){
-            $complaint->duration = '3';
+            $complaint->duration = '1';
         }
         elseif($complaint->complaint_priority == 'medium'){
-            $complaint->duration = '4';
+            $complaint->duration = '2';
         }
         else{
-            $complaint->duration = '5';
+            $complaint->duration = '3';
         }
         $complaint->save();
         return \redirect('/complaints')->with('info', 'task assigned successfully');

@@ -17,7 +17,6 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
 @endif
-<?php $zone = Auth::user()->zone; ?>
 <section class="content">
       <div class="row">
         <div class="col-xl-12">
@@ -44,7 +43,6 @@
                 <tbody>
                 @if(count($complaints ?? '') > 0)   
                     @foreach($complaints ?? ''->all() as $complaint) 
-                @if($zone == $complaint->zone)
                 <tr>
                     <td>{{ ($complaint->name) }}</td>
                     <td>{{ ($complaint->account_number) }}</td>
@@ -105,7 +103,6 @@
                       </div>
                   </div>
                 </tr>
-                @endif
                     @endforeach
                 @endif
                 </tbody>

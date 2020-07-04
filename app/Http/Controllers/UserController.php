@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Supports\Facades\Input;
+
 
 use App\User;
 
@@ -88,5 +88,55 @@ class UserController extends Controller
         ->delete();
         
         return redirect('/users')->with('info', 'user deleted successfully');
+    }
+
+    public function viewProfile($id){
+        $user = User::find($id);
+        return view('users\profileSetup', compact('user'));
+    }
+
+    public function updateProfile(Request $request, $id){
+        $validatedData = $request->validate([
+            'fname' => ['required', 'string', 'max:255'],
+            'mname' => [ 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'regex:/^(\+255)[0-9]{9}$/', 'max:13'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+        ]);
+        $update = User::find($id);// getting all details of a user with id = $id
+
+        $phone_check = User::where('id', '!=', $id)->where('phone', $request->input('phone'));
+        $email_check = User::where('id', '!=', $id)->where('email', $request->input('email'));
+
+        if($phone_check->exists() || $email_check->exists()){
+            return redirect ('profile/'.$id)->with('err', 'The phone number or email entered belongs to another user!');
+
+        }elseif(!empty($request->input('current_password'))){
+            $user = User::where('id', $id)->first(); //this returns the first match, but password doesn't returned
+            // here the iput password is being hashed before compare it with the hased one in the users table
+            $validCredentials = Hash::check($request->input('current_password'), $user->getAuthPassword()); // getAuthPassword helps to return the hashed password from users table
+
+            if(!$validCredentials){
+                return redirect ('profile/'.$id)->with('err', 'The current password entered does not match!');
+            }else{
+                $validatedData = $request->validate([
+                    'password' => ['required', 'string', 'min:8', 'confirmed'], //password validation
+        
+                ]);
+               $update->password = Hash::make($request->input('password'));
+
+            }
+        }
+        $update->fname = $request->input('fname');
+        $update->mname = $request->input('mname');
+        $update->lname = $request->input('lname');
+        $update->username = $request->input('username');
+        $update->phone = $request->input('phone');
+        $update->email = $request->input('email');
+
+        $update->save();
+
+        return redirect('profile/'.$id)->with('info', 'user updated successful');
     }
 }

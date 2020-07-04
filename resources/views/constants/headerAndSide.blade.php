@@ -83,25 +83,41 @@
                     </li>
                 @endif
             @else
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <span class=" p-2">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        </span>
-                        {{ Auth::user()->username }} <span class="caret"></span>
-                    </a>
+                <li class="dropdown user user-menu">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                      <span class=" p-2">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                      </span>
+                      {{ Auth::user()->username }} <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <!-- User image -->
+                    <li class="user-header">
+                    <i class="fa fa-5x fa-user-circle-o" style="color: #fff;" aria-hidden="true"></i>
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                      <p>
+                        <?php echo Auth::user()->fname . ' '.Auth::user()->mname.' '.Auth::user()->lname ?> 
+                      </p>
+                    </li>
+                    <!-- Menu Body -->
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                      <div class="pull-left">
+                        <a href='{{ url("/profile/".Auth::user()->id) }}' class="btn btn-default btn-flat">Profile</a>
+                      </div>
+                      <div class="pull-right">
+                        <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
+                                  onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();">
+                                Sign out
                         </a>
-
+                        
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
-                    </div>
+                      </div>
+                    </li>
+                  </ul>
                 </li>
             @endguest
             <ul class="dropdown-menu">
@@ -508,6 +524,7 @@
 <script type='text/javascript'>
     $(document).ready(function(){
         $('.add').hide();
+         $('.pass').hide();
         $("#register").click(function(){
          $(".add").toggle();
          $('.updt').hide();
@@ -516,6 +533,20 @@
         $("#update").click(function(){
          $(".updt").toggle();
          $('.add').hide();
+        });
+
+        $("#userPassword").click(function(){
+         $(".pass").show();
+         $(".fields").hide();
+         $("#userFields").removeClass("active");
+         $("#userPassword").addClass("active");
+        });
+
+        $("#userFields").click(function(){
+         $(".pass").hide();
+         $(".fields").show();
+         $("#userFields").addClass("active");
+         $("#userPassword").removeClass("active");
         });
     });
 

@@ -19,7 +19,7 @@ class TechnicianController extends Controller
     }
     
     public function view(){
-        $technicians = Technician::all();
+        $technicians = Technician::where('zone', auth()->user()->zone)->get();
         return view('technicians/technicians', ['technicians' => $technicians]);
     }
     public function register(Request $request){
@@ -29,21 +29,29 @@ class TechnicianController extends Controller
             'lname' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'regex:/^(\+255)[0-9]{9}$/', 'max:13'],
             'gender' => ['required', 'string', 'max:5'],
+            'zone' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
 
         $newTechnician = new Technician;
 
-        $newTechnician->fname = $request->input('fname');
-        $newTechnician->mname = $request->input('mname');
-        $newTechnician->lname = $request->input('lname');
-        $newTechnician->phone = $request->input('phone');
-        $newTechnician->gender = $request->input('gender');
-        $newTechnician->email = $request->input('email');
+        $tech_phone = $request->input('phone');
+        if($newTechnician::where('phone', $tech_phone)->exists()){
+            return redirect('/view_tech')->with('err', 'user phone exists');
+        }else{
+            $newTechnician->fname = $request->input('fname');
+            $newTechnician->mname = $request->input('mname');
+            $newTechnician->lname = $request->input('lname');
+            $newTechnician->phone = $request->input('phone');
+            $newTechnician->gender = $request->input('gender');
+            $newTechnician->email = $request->input('email');
+            $newTechnician->zone = $request->input('zone');
 
-        $newTechnician->save();
+            $newTechnician->save();
 
-        return redirect('/view_tech')->with('info', 'user added successfully');
+            return redirect('/view_tech')->with('info', 'user added successfully');
+        }
+        
     }
 
     public function delete($id){
@@ -60,6 +68,7 @@ class TechnicianController extends Controller
             'lname' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'regex:/^(\+255)[0-9]{9}$/', 'max:13'],
             'gender' => ['required', 'string', 'max:5'],
+            'zone' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
 
@@ -71,6 +80,7 @@ class TechnicianController extends Controller
         $tech_update->phone = $request->input('phone');
         $tech_update->gender = $request->input('gender');
         $tech_update->email = $request->input('email');
+        $tech_update->zone = $request->input('zone');
 
         $tech_update->save();
 

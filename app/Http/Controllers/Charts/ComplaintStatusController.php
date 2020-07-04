@@ -25,7 +25,7 @@ class ComplaintStatusController extends Controller
     }    
 
     public function getMonthlyComplaintCount($status_name){
-        $monthly_complaint_count = Complaint::whereMonth('created_at', date('m'))->where('status', $status_name)->get()->count('status');
+        $monthly_complaint_count = Complaint::whereMonth('updated_at', date('m'))->where('status', $status_name)->get()->count('status');
         return($monthly_complaint_count);
     }
 

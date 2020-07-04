@@ -31,7 +31,7 @@
           
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Complaints Statuses</h3>
+              <h3 class="box-title">Complaints Statuses in <?php echo date("M/Y"); ?> </h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -69,10 +69,16 @@
           </div>
           <!-- /.box -->
 
-          <!-- BAR CHART -->
+          <?php 
+              $role = Auth::user()->role; 
+              $manager_zone = Auth::user()->zone; 
+              $date = date_create('2000-01-01');
+                
+          ?>
+          @if($role == 'manager')
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Bar Chart</h3>
+              <h3 class="box-title">Zone complaints details in <?php echo date("M/Y"); ?> </h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -82,11 +88,45 @@
             </div>
             <div class="box-body">
               <div class="chart">
-                <canvas id="barChart" style="height: 42px; width: 116px;" height="42" width="116"></canvas>
+                <div class="box-body table-responsive">
+                  <table id="" class="table table-bordered table-hover display nowrap" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Complaints in {{($manager_zone)}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                          <th class="text-muted">Total</th>
+                          <td>{{ ($total_complaints) }}</td>
+                      </tr>
+                      <tr>
+                          <th class="text-muted">New <i class="fa fa-exclamation-circle text-danger"></i></th>
+                          <td>{{ ($new_complaints) }}</td>
+                      </tr>
+                      <tr>
+                          <th class="text-muted">In progress <i class="fa fa-spinner text-primary"></i></th>
+                          <td>{{ ($progress_complaints) }}</td>
+                      </tr>
+                      <tr>
+                          <th class="text-muted">Completed <i class="fa fa-check-circle text-success"></i></th>
+                          <td>{{ ($completed_complaints) }}</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Complaints in {{($manager_zone)}}</th>
+                    </tr>
+                    </tfoot>
+                  </table>
+                </div>
               </div>
             </div>
             <!-- /.box-body -->
           </div>
+          @endif
           <!-- /.box -->
 
         </div>
