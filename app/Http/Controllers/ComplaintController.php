@@ -26,10 +26,10 @@ class ComplaintController extends Controller
 
     public function index(){
         $technicians = Technician::where('status', 'available')
-                                ->where('zone', User::distinct('zone')->pluck('zone'))
+                                ->where('zone', auth()->user()->zone)
                                 ->get(); // getting all the technicians with no assigned tasks corresponding to the zone manager's zone
         $complaints = Complaint::where('status', 'new')
-                                ->where('zone', User::distinct('zone')->pluck('zone'))
+                                ->where('zone', auth()->user()->zone)
                                 ->get(); // getting all the new complaint which have not addressed corresponding to the zone manager's zone
         return view('complaints/viewComplaints', ['complaints'=>$complaints, 'technicians'=>$technicians]);
     }
