@@ -92,7 +92,7 @@ class UserController extends Controller
 
     public function viewProfile($id){
         $user = User::find($id);
-        return view('users\profileSetup', compact('user'));
+        return view('users/profileSetup', compact('user'));
     }
 
     public function updateProfile(Request $request, $id){
