@@ -37,7 +37,7 @@ class ComplaintController extends Controller
     public function add(Request $request){
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'account_number' => [ 'required','max:255'],
+            'meter_no' => [ 'required','max:8', 'min:8'],
             'zone' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'regex:/^(\+255)[0-9]{9}$/', 'max:13'],
             'complaint_type' => ['required', 'string', 'max:50'],
@@ -48,7 +48,7 @@ class ComplaintController extends Controller
         $complaints = new Complaint;
 
         $complaints->name = $request->input('name');
-        $complaints->account_number = $request->input('account_number');
+        $complaints->meter_no = $request->input('meter_no');
         $complaints->zone = $request->input('zone');
         $complaints->phone = $request->input('phone');
         $complaints->report_medium = $request->input('report_medium');

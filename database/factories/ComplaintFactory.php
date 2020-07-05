@@ -7,12 +7,17 @@ use Faker\Generator as Faker;
 
 $factory->define(Complaint::class, function (Faker $faker) {
     $result = '';
+    $meter = '';
     for($i = 0; $i < 9; $i++) {
         $result .= mt_rand(0, 9);
     }
+
+    for($i = 0; $i < 8; $i++) {
+        $meter .= mt_rand(0, 9);
+    }
     return [
         'name' => $faker->name,
-        'account_number'=>$faker->numberBetween($min = 1200, $max = 50000),
+        'meter_no'=>$meter,
         'zone' => $faker->randomElement(['mazimbu', 'mindu', 'sabasaba', 'kihonda', 'boma', 'msanvu']),
         // 'gender' => $faker->randomElement(['M', 'F']),
         'phone' => '+255'.$result,
