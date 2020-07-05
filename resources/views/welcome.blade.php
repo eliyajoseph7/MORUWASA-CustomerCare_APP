@@ -300,24 +300,12 @@ body, html {
                 </div>
                 
                 <div class="form-row">
-                    <div class="form-group col-md-12">
+                    <div class="col-md-6">
+                        <label>Meter Number *</label>
                         <input type="text" class="form-control @error('meter_no') is-invalid @enderror" name="meter_no" value="{{ old('meter_no') }}" 
                             required autocomplete="meter_no" autofocus placeholder="Your meter number *">
 
                         @error('meter_no')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6">
-                        <label>Account Number</label>
-                        <input id="account_number" type="text" class="form-control @error('account_number') is-invalid @enderror" name="account_number" 
-                        value="{{ old('account_number') }}" autocomplete="account_number" placeholder="Account Number *" >
-
-                        @error('account_number')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -359,9 +347,9 @@ body, html {
                         <label class="info-text">Complaint Type *</label>
                             <select name="complaint_type" class="form-control">
                                 <option value="">select..</option>
-                                <option value="high_bill">High bills</option>
-                                <option value="no_water">No water service</option>
-                                <option value="meter_defaults">Meter defaults</option>
+                                <option value="high bill">High bills</option>
+                                <option value="no water">No water service</option>
+                                <option value="meter defaults">Meter defaults</option>
                                 <option value="leakage">Water leakage</option>
                                 <option value="">Others</option>
                             </select>
