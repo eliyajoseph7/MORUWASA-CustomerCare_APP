@@ -98,6 +98,17 @@ body, html {
         </div>
     </div>
 @endif
+
+@if ($errors->any()) 
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+@endif
 <!-- Header with full-height image -->
 <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
   <div id="complain" class="w3-display-left w3-text-white" style="padding:48px">
