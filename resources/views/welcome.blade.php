@@ -328,7 +328,7 @@ body, html {
                 <div class="form-row">
                     <div class="col-md-6">
                         <label class="info-text"> Select the zone *</label>
-                            <select name="" id="zone" class="form-control">
+                            <select name="zone" id="zone" class="form-control">
                                 <option value=""> select.. </option>
                                 <option value="mazimbu"> Mazimbu </option>
                                 <option value="sabasaba">Sabasaba</option>
