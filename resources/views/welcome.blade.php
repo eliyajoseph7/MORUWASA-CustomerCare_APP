@@ -100,7 +100,7 @@ body, html {
 @endif
 
 @if ($errors->any()) 
-      <div class="alert alert-danger alert-dismissible" role="alert">
+      <div class="alert alert-danger alert-dismissible" role="alert" style="z-index: 1">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
