@@ -20,7 +20,7 @@ class TechnicianController extends Controller
         $lname = $request->input('lname');
 
         $check = Technician::where('email', $email)
-                    ->where('lname', $lname);
+                    ->whereRaw('lower(lname) = ? ', \strtolower($lname));
                     
 
         if($check->exists())
