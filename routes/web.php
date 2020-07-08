@@ -62,3 +62,8 @@ Route::get('/complaint_location',[
     'as' => 'complaint_location.location',
     'uses' => 'Charts\ComplaintLocationController@getMonthlyComplaintLocation'
 ]);
+
+
+// Route::any('/{page?}',function(){
+//     return View::make('errors.404');
+//   })->where('page','.*');
