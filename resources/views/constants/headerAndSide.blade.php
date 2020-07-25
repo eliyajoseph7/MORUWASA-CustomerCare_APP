@@ -49,6 +49,14 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <style>
+    
+@media print {
+  table td:last-child {display:none}
+  table th:last-child {display:none}
+}
+  </style>
   
 </head>
 
@@ -512,7 +520,8 @@
 <!-- AdminLTE App -->
 <script src="{{ url('dist/js/adminlte.min.js') }}"></script>
 <!-- DataTables -->
-<script src="{{ url('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<!-- <script src="{{ url('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script> -->
+<script src="{{ url('js/dataTables.min.js') }}"></script>
 <script src="{{ url('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 
 <!-- Charts -->
@@ -565,8 +574,8 @@
     })
   })
 </script> -->
-<script>
-$(document).ready(function() {
+<!-- <script>
+  $(document).ready(function() {
     $('#example1').DataTable( {
         responsive: {
             details: {
@@ -588,12 +597,63 @@ $(document).ready(function() {
         }
     } );
 } );
-</script>
+</script> -->
 <!-- bootstrap modal -->
 <!-- <script>
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').focus()
 }) -->
+</script>
+<!-- Datatable features -->
+<script>
+        $(document).ready(function(){
+            $('#example1').DataTable({
+                pageLength: 10,
+                responsive: true,
+                // dom: '<"html5buttons"B>lTfgitp',
+                dom: '<"html5buttons">lBTfgtip',
+                buttons: [
+                    { extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'RenameFile'},
+                    {extend: 'pdf', title: 'RenameFile'},
+
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ],
+                
+                responsive: {
+                    details: {
+                        renderer: function ( api, rowIdx, columns ) {
+                            var data = $.map( columns, function ( col, j ) {
+                                return col.hidden ?
+                                    '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+                                        '<td>'+col.title+':'+'</td> '+
+                                        '<td>'+col.data+'</td>'+
+                                    '</tr>' :
+                                    '';
+                            } ).join('');
+        
+                            return data ?
+                                $('<table/>').append( data ) :
+                                false;
+                        }
+                    }
+                }
+            });
+            
+          
+
+        });
+
 </script>
 </body>
 </html>

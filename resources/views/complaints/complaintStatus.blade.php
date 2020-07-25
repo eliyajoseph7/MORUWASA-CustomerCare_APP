@@ -20,7 +20,7 @@
 
 <section class="content">
       <div class="row">
-        <div class="col-xl-12">
+        <div class="col-lg-10">
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">New complaints</h3>
