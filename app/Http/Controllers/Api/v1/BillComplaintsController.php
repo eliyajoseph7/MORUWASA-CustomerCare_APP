@@ -9,10 +9,10 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class BillComplaintsController extends Controller
 {
-    public function index(): ResourceCollection
+    public function index()
     {
         $bill_complaints = Complaint::where('complaint_type', 'high bill')->get();
 
-        return new ResourceCollection($bill_complaints);
+        return ($bill_complaints);
     }
 }
