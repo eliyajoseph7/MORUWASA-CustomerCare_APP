@@ -22,7 +22,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users', 'UserController@users');
-Route::get('/register-user', 'UserController@register');
 Route::get('/viewUser/{id}', 'UserController@view');
 Route::post('/addUser', 'UserController@add');
 Route::post('/updateUser/{id}', 'UserController@update');
