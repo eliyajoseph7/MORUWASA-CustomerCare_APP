@@ -13,6 +13,6 @@ class BillComplaintsController extends Controller
     {
         $bill_complaints = Complaint::where('complaint_type', 'high bill')->get();
 
-        return ($bill_complaints);
+        return $bill_complaints;
     }
 }
