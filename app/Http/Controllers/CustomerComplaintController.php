@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \GuzzleHttp\Client;
 use App\Complaint;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class CustomerComplaintController extends Controller
 {
@@ -43,6 +44,17 @@ class CustomerComplaintController extends Controller
 
             $complaints->save();
 
+            $feedback = Complaint::where('meter_no', $request->input('meter_no'))
+                                    ->where('phone', '+255759454669')
+                                    ->first();
+            if(!is_null($feedback)){
+                Nexmo::message()->send([
+                    'to'   => $feedback->phone,
+                    'from' => '0759454669',
+                    'text' => 'Mpendwa mteja '. $feedback->name .', tunashughulikia tatizo lako, ahsante.' 
+                ]);
+            }
+// return 'yezee';
             return back()->with("info", 'Your complaint has successful submited');
          }   
     }
