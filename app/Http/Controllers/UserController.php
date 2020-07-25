@@ -22,8 +22,13 @@ class UserController extends Controller
     }
 
     public function users(){
-        $users = User::all();
-        return view('users/viewUsers', ['users' => $users]);
+        if(auth()->user()->role == 'admin'){
+            $users = User::all();
+            return view('users/viewUsers', ['users' => $users]);
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
     public function add(Request $request){

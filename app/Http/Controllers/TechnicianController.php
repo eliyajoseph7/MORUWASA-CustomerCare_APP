@@ -19,8 +19,13 @@ class TechnicianController extends Controller
     }
     
     public function view(){
-        $technicians = Technician::where('zone', auth()->user()->zone)->get();
-        return view('technicians/technicians', ['technicians' => $technicians]);
+        if(auth()->user()->role == 'manager'){
+            $technicians = Technician::where('zone', auth()->user()->zone)->get();
+            return view('technicians/technicians', ['technicians' => $technicians]);
+        }
+        else{
+            return redirect()->back();
+        } 
     }
     public function register(Request $request){
         $validatedData = $request->validate([

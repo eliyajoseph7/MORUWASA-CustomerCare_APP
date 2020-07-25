@@ -21,17 +21,27 @@ class ComplaintController extends Controller
     }
 
     public function view(){
-        return view('complaints/complaints');
+        if(auth()->user()->role == 'agent'){
+            return view('complaints/complaints');
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
     public function index(){
-        $technicians = Technician::where('status', 'available')
-                                ->where('zone', auth()->user()->zone)
-                                ->get(); // getting all the technicians with no assigned tasks corresponding to the zone manager's zone
-        $complaints = Complaint::where('status', 'new')
-                                ->where('zone', auth()->user()->zone)
-                                ->get(); // getting all the new complaint which have not addressed corresponding to the zone manager's zone
-        return view('complaints/viewComplaints', ['complaints'=>$complaints, 'technicians'=>$technicians]);
+        if (auth()->user()->role == 'manager') {
+            $technicians = Technician::where('status', 'available')
+                                    ->where('zone', auth()->user()->zone)
+                                    ->get(); // getting all the technicians with no assigned tasks corresponding to the zone manager's zone
+            $complaints = Complaint::where('status', 'new')
+                                    ->where('zone', auth()->user()->zone)
+                                    ->get(); // getting all the new complaint which have not addressed corresponding to the zone manager's zone
+            return view('complaints/viewComplaints', ['complaints'=>$complaints, 'technicians'=>$technicians]);
+        }
+        else{
+            return redirect()->back();
+        }    
     }
 
     public function add(Request $request){
@@ -91,7 +101,12 @@ class ComplaintController extends Controller
 
 
     public function complaintStatus(){
-        $complaints = Complaint::all();
-        return view('complaints/complaintStatus', ['complaints'=>$complaints]);
+        if(auth()->user()->role != 'admin'){
+            $complaints = Complaint::where('zone', auth()->user()->zone)->get();
+            return view('complaints/complaintStatus', ['complaints'=>$complaints]);
+        }
+        else{
+            return redirect()->back();
+        } 
     }
 }
