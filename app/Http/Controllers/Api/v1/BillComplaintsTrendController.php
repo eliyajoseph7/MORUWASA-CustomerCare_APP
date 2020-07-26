@@ -6,6 +6,7 @@ use DateTime;
 use App\Complaint;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Resources\TechResource;
 
 class BillComplaintsTrendController extends Controller
 {
@@ -32,7 +33,8 @@ class BillComplaintsTrendController extends Controller
         return($monthly_complaint_count);
     }
 
-    public function index(){
+    public function index(): TechResource
+    {
         $monthly_complaint_count_array = array();
          $month_array = $this->getAllMonths();
          $month_name_array = array();
@@ -53,7 +55,7 @@ class BillComplaintsTrendController extends Controller
             'complaint_count_data' => $monthly_complaint_count_array,
             'max' => $max
          );
-    return $monthly_complaint_data_array;
+    return new TechResource($monthly_complaint_data_array);
 
     }
 }
