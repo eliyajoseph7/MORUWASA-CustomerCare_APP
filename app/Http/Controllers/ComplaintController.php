@@ -37,7 +37,7 @@ class ComplaintController extends Controller
             $complaints = Complaint::where('status', 'new')
                                     ->where('zone', auth()->user()->zone)
                                     ->get(); // getting all the new complaint which have not addressed corresponding to the zone manager's zone
-            return view('complaints/viewComplaints', ['complaints'=>$complaints, 'technicians'=>$technicians]);
+            return view('complaints.viewComplaints', ['complaints'=>$complaints, 'technicians'=>$technicians]);
         }
         else{
             return redirect()->back();
