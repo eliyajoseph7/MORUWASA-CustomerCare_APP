@@ -29,7 +29,7 @@ class ComplaintController extends Controller
         }
     }
 
-    public function complaints(){
+    public function complaintss(){
         if (auth()->user()->role == 'manager') {
             $technicians = Technician::where('status', 'available')
                                     ->where('zone', auth()->user()->zone)
@@ -37,7 +37,7 @@ class ComplaintController extends Controller
             $complaints = Complaint::where('status', 'new')
                                     ->where('zone', auth()->user()->zone)
                                     ->get(); // getting all the new complaint which have not addressed corresponding to the zone manager's zone
-            return view('complaints.viewComplaints', ['complaints'=>$complaints, 'technicians'=>$technicians]);
+            return view('complaints.viewComplaints', compact('complaints', 'technicians'));
         }
         else{
             return redirect()->back();
