@@ -34,7 +34,7 @@ body, html {
 .bgimg-1 {
   background-position: center;
   background-size: cover;
-  background-image: url("https://images.fineartamerica.com/images-medium-large-5/blurred-waterfall-ivan-slosar.jpg");
+  background-image: url("https://wallpaperplay.com/walls/full/7/4/7/268572.jpg");
   min-height: 100%;
 }
 
@@ -85,7 +85,7 @@ body, html {
       <a href="#team" class="w3-bar-item w3-button"><i class="fa fa-user"></i> TEAM</a>
       <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> WORK</a>
       <a href="#pricing" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> PRICING</a>
-      <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+      <a href="new_connection" class="w3-bar-item w3-button text-uppercase"><i class="fa fa-envelope"></i> New Connection</a>
     </div>
     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
