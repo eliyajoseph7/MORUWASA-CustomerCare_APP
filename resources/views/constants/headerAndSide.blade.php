@@ -237,7 +237,7 @@
           </a>
         </li>
         <li>
-          <a href="/complaints">
+          <a href="/complaint">
             <i class="fa fa-check"></i> <span>Assign Task</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
