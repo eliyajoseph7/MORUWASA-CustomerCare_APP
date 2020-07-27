@@ -42,7 +42,7 @@ Route::get('/deleteTechnician/{id}', 'TechnicianController@delete');
 // complaints
 Route::get('/add_complaint','ComplaintController@view');
 Route::post('/save_complaint','ComplaintController@add');
-Route::get('/complaints','ComplaintController@index');
+Route::get('/complaints','ComplaintController@complaints');
 Route::post('/assignTechnician/{id}', 'ComplaintController@assignTask');
 Route::get('/complaint_statuses', 'ComplaintController@complaintStatus');
 Route::post('/send_complaint', 'CustomerComplaintController@customerComplaint');

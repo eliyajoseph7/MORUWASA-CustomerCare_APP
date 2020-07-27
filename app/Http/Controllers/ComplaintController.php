@@ -29,7 +29,7 @@ class ComplaintController extends Controller
         }
     }
 
-    public function index(){
+    public function complaints(){
         if (auth()->user()->role == 'manager') {
             $technicians = Technician::where('status', 'available')
                                     ->where('zone', auth()->user()->zone)
