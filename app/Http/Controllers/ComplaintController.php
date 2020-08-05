@@ -96,7 +96,7 @@ class ComplaintController extends Controller
             $complaint->duration = '3';
         }
         $complaint->save();
-        return \redirect('/complaints')->with('info', 'task assigned successfully');
+        return \redirect('/complaint')->with('info', 'task assigned successfully');
     }
 
 
