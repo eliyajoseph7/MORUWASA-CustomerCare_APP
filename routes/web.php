@@ -46,6 +46,7 @@ Route::get('/complaint','ComplaintController@complaints');
 Route::post('/assignTechnician/{id}', 'ComplaintController@assignTask');
 Route::get('/complaint_statuses', 'ComplaintController@complaintStatus');
 Route::post('/send_complaint', 'CustomerComplaintController@customerComplaint');
+Route::get('/customer_ratings', 'ComplaintController@index');
 
 
 // charts
