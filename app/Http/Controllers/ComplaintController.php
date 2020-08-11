@@ -109,4 +109,11 @@ class ComplaintController extends Controller
             return redirect()->back();
         } 
     }
+
+    public function index()
+    {
+        $ratings = Complaint::where('status', 'completed')->where('customer_rating', '!=', null)->get();
+
+        return view('complaints.customer_rating', compact('ratings'));
+    }
 }
