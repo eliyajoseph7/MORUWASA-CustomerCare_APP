@@ -72,6 +72,20 @@ body, html {
             right: 0; 
             margin: auto; 
         } 
+        .parallax {
+          background-image: url("assets/river.gif");
+          height: 50vh;
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover
+        }
+        /* Turn off parallax scrolling for all tablets and phones. Increase/decrease the pixels if needed */
+        @media only screen and (max-device-width: 1366px) {
+          .parallax {
+            background-attachment: scroll;
+          }
+        }
 </style>
 <body>
 
@@ -135,7 +149,7 @@ body, html {
     <i class="fa fa-twitter w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
   </div>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">#moruwasa</a></p>
+  <p>Powered by <a href="#" title="W3.CSS" target="_blank" class="w3-hover-text-green">#moruwasa</a></p>
 </footer>
  
 <script>
