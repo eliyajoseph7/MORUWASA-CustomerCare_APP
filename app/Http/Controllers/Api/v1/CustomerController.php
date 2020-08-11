@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Resources\TechResource;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 use App\Complaint;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
@@ -31,5 +31,18 @@ class CustomerController extends Controller
             }
 
             
+    }
+
+    public function update($meter, Request $request): TechResource
+    {
+        $rating_input = $request->input('customer_rating');
+        $rating_description = $request->input('rating_description');
+
+        // return $rating_description;
+        $comp = Complaint::where('meter_no', $meter)->where('status', 'completed')->first();
+        $comp->customer_rating = $rating_input;
+        $comp->rating_description = $rating_description;
+        $comp->save();
+        return new TechResource($comp);
     }
 }
