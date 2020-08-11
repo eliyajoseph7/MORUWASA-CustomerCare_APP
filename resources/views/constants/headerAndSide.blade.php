@@ -253,6 +253,16 @@
           </a>
         </li>
         @endif
+        @if($role != 'agent')
+        <li>
+          <a href="/customer_ratings">
+            <i class="fa fa-star text-orange"></i> <span>Customer Ratings</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">view</small>
+            </span>
+          </a>
+        </li>
+        @endif
         <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
