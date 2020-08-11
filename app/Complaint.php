@@ -14,12 +14,15 @@ class Complaint extends Model
      */
     protected $fillable = [
             'name',
-            'account_number',
             'zone',
             'phone',
             'complaint_type',
             'report_medium',
             'complaint_priority',
+            'status',
+            'duration',
+            'description',
+            'meter_no'
     ];
 
     public function technician(){
