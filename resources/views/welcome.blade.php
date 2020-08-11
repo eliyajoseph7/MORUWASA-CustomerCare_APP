@@ -102,6 +102,7 @@
     </div>
   </div>
 </div>
+<div class="parallax"></div>
 
 <div id="team"></div>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
