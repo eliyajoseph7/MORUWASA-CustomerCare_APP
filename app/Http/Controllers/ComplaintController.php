@@ -112,8 +112,9 @@ class ComplaintController extends Controller
 
     public function index()
     {
-        $ratings = Complaint::where('status', 'completed')->where('customer_rating', '!=', null)->get();
-
+        $ratings = Complaint::join('technicians', 'complaints.id', '=', 'technicians.complaint_id')
+                            ->where('complaints.status', 'completed')->where('customer_rating', '!=', null)->get();
+// return $ratings;
         return view('complaints.customer_rating', compact('ratings'));
     }
 }

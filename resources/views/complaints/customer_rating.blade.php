@@ -37,7 +37,7 @@
                     @else
                         <td>no description</td>
                     @endif
-                    <td>{{ ($rating->technician->fname) }} {{ ($rating->technician->lname) }}</td>
+                    <td>{{ ($rating->fname) }} {{ ($rating->lname) }}</td>
                     @if($rating ->customer_rating == 5) 
                     <td>
                         <i class="fa fa-star fa-2x text-danger"></i>
